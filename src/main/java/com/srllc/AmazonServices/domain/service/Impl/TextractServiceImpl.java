@@ -316,8 +316,6 @@ public class TextractServiceImpl implements TextractServiceInterface {
     private RecieptItem parseItemLine(String line) {
         log.info("Attempting to parse item line: '{}'", line);
 
-        // Pattern 1: ProductName [spaces] quantity [spaces] $price
-        // Example: "Apple 1 $9.20"
         Pattern pattern1 = Pattern.compile("([A-Za-z][A-Za-z\\s]+?)\\s+(\\d+)\\s+\\$(\\d+\\.\\d{2})");
         Matcher matcher1 = pattern1.matcher(line);
 

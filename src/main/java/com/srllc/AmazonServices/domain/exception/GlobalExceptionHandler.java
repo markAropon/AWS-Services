@@ -148,6 +148,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(RekognitionException.class)
+    public ResponseEntity<ApiResponse<String>> handleRekognitionException(RekognitionException ex) {
+        ApiResponse<String> response = new ApiResponse<>();
+        response.setHttpStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+        response.setMessage("AWS Rekognition error: " + ex.getMessage());
+        response.setPayload(null);
+        response.setErrorCode(500);
+        response.setTimestamp(LocalDateTime.now());
+        response.setPath(getCurrentPath());
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<String>> handleGeneralException(Exception ex) {
         ApiResponse<String> response = new ApiResponse<>();

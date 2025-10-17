@@ -14,10 +14,10 @@ public class OpenApiConfig {
         public OpenAPI customOpenAPI() {
                 return new OpenAPI()
                                 .info(new Info()
-                                                .title("AWS Textract Receipt Extractor API")
+                                                .title("AWS Services API")
                                                 .version("1.0")
                                                 .description(
-                                                                "API for extracting structured data from receipt images using Amazon Textract")
+                                                                "API for using AWS Services Textraction and Rekognition")
                                                 .contact(new Contact()
                                                                 .name("Developer ***Mark James Aropon***")
                                                                 .email("markjamesAropon.srbootcamp2025@gmail.com")));

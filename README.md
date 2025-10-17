@@ -1,10 +1,14 @@
-# AWS Textract Receipt Extractor
+# AWS Services {Textraction and Rekognition}
 
-Spring Boot activity that extracts structured data from receipt images using Amazon Textract OCR service.
+Spring Boot activity that extracts structured data from receipt images using Amazon Textract OCR service and Rekognition.
 
-## Demo
+## Demo for textraction
 
-[View Video Demo](https://screenrec.com/share/aTUEz4nySR)
+[View Video Demo For Textraction](https://screenrec.com/share/aTUEz4nySR)
+
+## Demo for Rekognition
+
+[View Video Demo For Rekognition](https://screenrec.com/share/zK9bSfr63D)
 
 ## Features
 
@@ -16,6 +20,8 @@ Spring Boot activity that extracts structured data from receipt images using Ama
 - RESTful API with Swagger documentation
 - Global exception Handlin
 
+- Rekognition Service used to recognize famous celebrities in the world
+
 ## Technologies
 
 - Java 21
@@ -23,6 +29,7 @@ Spring Boot activity that extracts structured data from receipt images using Ama
 - Spring Data JPA
 - MySQL Database
 - AWS Textract SDK
+- AWS Rekognition SDK
 - Lombok
 - Springdoc OpenAPI (Swagger)
 - Maven
@@ -64,7 +71,15 @@ Parameter: file (image file)
 GET /api/v1/textract/receipt/{id}
 ```
 
-## Sample Response
+### Post Recognize Celebrities
+
+````
+POST api/v1/rekognition/celebrities
+Content-Type: multipart/form-data
+Parameter: file (image file)
+
+
+## Sample Response for textraction
 
 ```json
 {
@@ -95,6 +110,28 @@ GET /api/v1/textract/receipt/{id}
     "cash": 200.0,
     "change": 92.4
   }
+}
+````
+
+## Sample Response for Rekognition
+
+```json
+{
+  "celebrities": [
+    {
+      "name": "Park Shin-hye",
+      "id": "3JN9ir7l",
+      "confidence": 99.99869,
+      "urls": ["www.wikidata.org/wiki/Q497785", "www.imdb.com/name/nm2339975"],
+      "boundingBox": {
+        "width": 0.42160946,
+        "height": 0.27741024,
+        "left": 0.24580704,
+        "top": 0.27954635
+      }
+    }
+  ],
+  "unrecognizedFaces": 1
 }
 ```
 
